@@ -2,14 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { usePlan } from '../context/PlanContext';
 
-interface NavbarProps {
-  planCount?: number;
-  savedCount?: number;
-}
-
-export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
+export default function Navbar() {
   const pathname = usePathname();
+  const { planItems, savedItems } = usePlan();
 
   const isWorkoutsActive = pathname === '/';
   const isMyPlanActive = pathname === '/my-plan';
@@ -76,7 +73,7 @@ export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
           </Link>
         </nav>
 
-        {/* Badges */}
+        {/* Dynamic Badges from PlanContext */}
         <div className="flex items-center gap-5 text-xs font-semibold">
           <div className="flex items-center gap-2 text-gray-300">
             <span>Plan</span>
@@ -84,13 +81,13 @@ export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
               style={{ backgroundColor: '#ccff00', color: '#000000' }}
               className="w-5 h-5 rounded-full text-[11px] font-extrabold flex items-center justify-center"
             >
-              {planCount}
+              {planItems.length}
             </span>
           </div>
           <div className="flex items-center gap-2 text-gray-300">
             <span>Saved</span>
             <span className="w-5 h-5 rounded-full bg-[#1a1d20] text-gray-300 text-[11px] font-bold flex items-center justify-center border border-gray-700">
-              {savedCount}
+              {savedItems.length}
             </span>
           </div>
         </div>
