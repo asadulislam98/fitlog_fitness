@@ -5,4 +5,7 @@
     background-color: #0b0c0e;
     color: #ffffff;
   }
+  html {
+  scroll-behavior: smooth;
+}
 }
