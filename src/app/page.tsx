@@ -1,4 +1,5 @@
 import Banner from '../components/Banner';
+import WorkoutLibrary from '../components/WorkoutLibrary';
 
 export default function Home() {
   return (
@@ -13,6 +14,16 @@ export default function Home() {
         </h2>
         {/* Workout list elements will be added here */}
       </section>
+
+
+        {/* Workout Library Component */}
+        <WorkoutLibrary />
     </main>
+
+    
+
+
+
+
   );
 }
